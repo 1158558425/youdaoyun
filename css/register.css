@@ -1,0 +1,59 @@
+body{
+	background-image: url('../image/cat5.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.register{
+	background-color:rgba(255,255,255,0.4);
+	width:50%;
+	min-width: 800px;
+	height: 70%;
+	min-height: 500px;
+	border-radius:15px;
+	box-shadow: -5px 5px 5px #031a366b;
+	border: 2px solid #398DEE;
+}
+/* 已有账号？登录 */
+.register-login{
+	text-decoration:none;
+	float: left;
+	font-size: 14px;
+	padding: 15px;
+
+}
+.register-login a{
+	color: white;
+}
+.register-login a:hover{
+	color: white;
+}
+
+/*表单部分*/
+.register-form{
+	/*border: 1px solid black;*/
+	width: 50%;
+	min-width: 500px;
+	height: 90%;
+	min-height:400px;
+	padding: 4% 2%;
+}
+
+.register-form label{
+	padding: 10px 0px;
+	font-size: 16px;
+}
+
+
+.register-btn{
+	background-color: #19A7F0;
+}
+
+.register textarea{
+	width: 310px;
+	height: 50px;
+}
+.register-form-right{
+	color: #020b17c7!important;
+
+}
+

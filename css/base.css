@@ -1,0 +1,137 @@
+/**********************************
+抽取全局样式、复用样式、基础样式  
+更改库样式
+**********************************/
+
+/*添加基本的全局样式*/
+* {
+	margin: 0;
+	padding: 0;
+	border:0;
+}
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*必须为父元素设置百分比大小后，子元素才可以用百分比*/
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #EFEFEF;
+}
+form{
+	width: 100%;
+	height: 100%;
+}
+
+/*****************
+可复用的导航条样式
+******************/
+.bs-header{
+	height: 7%;
+	min-height: 50px;
+	width: 100%;
+	min-width: 1000px;
+	background-color: #398DEE;
+	/*background-color: rgba(57,141,238,0.6);*/
+	position: relative;
+}
+/* logo */
+.bs-logo{
+	width: 20%;
+	height: 100%;
+	line-height: 100%;
+	text-align: center;
+}
+.bs-logo>a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-left: 30px;
+	background: url(../image/logo.jpg) no-repeat 20% center;
+}
+
+/* nav */
+.bs-header-nav{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 20%;
+	width: 70%;
+	height: 100%;
+}
+/*nav-left*/
+.bs-header-nav-left{
+	float: left;
+	height: 100%;
+	font-size: 17px;
+}
+.bs-header-nav-left a:hover{
+	color:white;
+}
+.bs-header-nav-left>*{
+	display: block;
+	float: left;
+	width:80px;
+	height: 100%;
+	line-height: 300%; 
+	text-align: center;
+	color: rgba(255,255,255,0.6);
+}
+.bs-header-nav-active{
+	background-color: rgba(0,0,0,0.2);
+	color: #fff;
+}
+
+/*nav-right*/
+.bs-header-nav-right{
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.bs-header-nav-right>*{
+	float: left;
+}
+.bs-header-nav-right-user{
+	margin:2% 0; 
+}
+.bs-header-nav-right-user>img{
+	height:50px;
+	width: 50px;
+	border-radius: 10px;
+}
+.bs-header-nav-right-userinfo{
+	height: 100%;
+	line-height: 50px;
+	margin: 0 5px 0 5px;
+}
+.am-dropdown-content{
+	z-index: 1000000;
+}
+/*******************
+ 其他可复用样式
+********************/
+.bs-center-middle{
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+}
+
+/*更改 layui库样式*/
+.layui-textarea{
+	width:80%;
+	max-height: 100px;
+}
+.layui-form-radio>i:hover,
+.layui-form-radioed>i{
+	color: #1e9fff;
+}

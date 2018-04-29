@@ -1,0 +1,192 @@
+<?php
+        session_start();
+        $user = $_SESSION["username"];
+ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改密码</title>
+		<!-- 使用 amazeUI库 -->
+	<!-- 所有的以 am- 开始的class值，都是该库提供的样式 -->
+	<link rel="stylesheet" type="text/css" href="../css/module/amazeui.min.css">
+	<!-- 使用 layui库 -->
+	<link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+	
+	<!-- 抽取基本样式与复用样式，基本样式以 bs- 开头的class值 -->
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/accountSet.css">
+</head>
+<body>
+<div class="accountSet_body">
+	<header class="header bs-header">	
+		<div class="bs-logo">
+			<a href="#"></a>
+		</div>
+
+		<div class="bs-header-nav">
+			<div class="bs-header-nav-left">
+				<a class="bs-header-nav-active" href="#">云笔记</a>
+				<a href="#">聊天室</a>	
+				<a href="#">论坛</a>	
+			</div>
+			<div class="bs-header-nav-right">
+				<div class="bs-header-nav-right-user">
+					<img src="../image/user.jpg" alt="user-img">
+				</div>
+
+				<div id="userModel" class="bs-header-nav-right-userinfo am-dropdown" data-am-dropdown>
+					<span class="am-dropdown-toggle" data-am-dropdown-toggle>
+						<i class="am-icon-caret-down"></i>
+					</span>
+					<ul class="am-dropdown-content">
+						<li data-method="notice" class="user-model-ipt">
+							<a href="#">个人信息</a>
+						</li>
+						<li><a href="accountSet.html">修改密码</a></li>
+						<li><a href="accountSet.html">账号设置</a></li>
+						<li><a href="login.html">注销登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<ul class="nav-show layui-nav layui-bg-blue accountSet-ul-nav ">
+		<button class="accountSet-btn am-btn am-btn-xl am-btn-primary"><a onclick="javascript :history.back(-1);">返回笔记</a></button>
+	 	<li class=" layui-nav-item"><a href="">修改阅读密码</a></li>
+	 	<li class="layui-nav-item layui-this"><a href="">修改登录密码</a></li>
+	  	<li class="layui-nav-item"><a href="">导入</a></li>
+	  	<li class="layui-nav-item"><a href="">邮件提醒</a></li>
+	  	<li class="layui-nav-item"><a href="">应用管理</a></li>
+	</ul> 
+	
+	<form class="accountSet-form bs-center-middle" id="accountSet-password-read">
+		<p>修改笔记、笔记本阅读密码</p>
+			<hr class="accountSet-form-hr">
+			<div class="layui-form-item">
+			    <label class="layui-form-label">请输入原密码：</label>
+			    <div class="layui-input-inline password-block">
+			      <input type="password" name="password1" lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			    <div class="layui-form-mid layui-word-aux">*</div>
+			</div>
+
+			<div class="layui-form-item">
+			    <label class="layui-form-label">设置新密码：</label>
+			    <div class="layui-input-inline password-block">
+			      <input type="password" name="newpassword1" lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			    <div class="layui-form-mid layui-word-aux">*</div>
+			</div>
+
+			<div class="layui-form-item">
+			    <label class="layui-form-label">再次输入密码：</label>
+			    <div class="layui-input-inline password-block">
+			      <input type="password" name="assertpassword1" lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			    <div class="layui-form-mid layui-word-aux">*</div>
+			</div>	
+			<button class="ensure-edit accountSet-btn am-btn am-btn-xl am-btn-primary"><a href="">确认修改</a></button>
+	</form>
+
+	<form  method="post" action="alter_password.php" class="accountSet-form bs-center-middle" id="accountSet-password-login" onsubmit="return alter()">
+		<p>修改登录密码</p>
+			<hr class="accountSet-form-hr">
+		    <div class="layui-form-item">
+			    <label class="layui-form-label">用户名：</label>
+			    <div class="layui-input-inline password-block">
+				   <input type="text" name="username"  id ="username" lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			<div class="layui-form-mid layui-word-aux">当前用户名</div>
+		    </div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">请输入原密码：</label>
+			    <div class="layui-input-inline password-block">
+			      <input type="password" name="oldpassword" id="oldpassword"lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			    <div class="layui-form-mid layui-word-aux">请输入您的密码</div>
+			</div>
+
+			<div class="layui-form-item">
+			    <label class="layui-form-label">设置新密码：</label>
+			    <div class="layui-input-inline password-block">
+			      <input type="password" name="newpassword" id="newpassword"  lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+			</div>
+
+			<div class="layui-form-item">
+			    <label class="layui-form-label">再次输入密码：</label>
+			    <div class="layui-input-inline password-block">
+			      <input type="password" name="assertpassword" id="assertpassword"lay-verify="pass" placeholder="" autocomplete="off" class="layui-input">
+			    </div>
+			    <div class="layui-form-mid layui-word-aux">再次确定密码</div>
+			</div>
+			<button class="ensure-edit accountSet-btn am-btn am-btn-xl am-btn-primary"type="submit" onclick="return alter()"><a href="alter_password.php">确认修改</a></button>
+	</form>
+    <script type="text/javascript">
+        //document.getElementById("username").value="<?php echo $user;?>"
+    </script>
+	<script type="text/javascript">
+        function alter() {
+
+            var username=document.getElementById("username").value;
+            var oldpassword=document.getElementById("oldpassword").value;
+            var newpassword=document.getElementById("newpassword").value;
+            var assertpassword=document.getElementById("assertpassword").value;
+            var regex=/^[/s]+$/;
+            if(regex.test(username)||username.length==0){
+                alert("用户名格式不对");
+                return false;
+            }
+            if(regex.test(newpassword)&&newpassword.length<6) {
+                alert("新密码格式不对");
+                return false;
+            }
+            if (assertpassword != newpassword||assertpassword==0) {
+                alert("两次密码输入不一致");
+                return false;
+            }
+            return true;
+
+        }
+	</script>
+
+
+	<form class="accountSet-form bs-center-middle" id="accountSet-leadingIn">
+		<p>暂无可导入文件</p>
+	</form>
+
+	<form class="accountSet-form bs-center-middle" id="accountSet-email">
+		<div class="accountSet-email-div">
+			<p>我们会在第一时间将产品更新、产品活动等信息以电子邮件形式发送到您的注册账号邮箱中。请选择是否开启邮箱提醒功能：</p>
+			<br>
+			<p>邮件提醒 ：</p>
+			<div class="layui-input-block accountSet-email-radio">
+				<input type="radio" name="email" value="关闭" title="关闭" >开启
+				<input type="radio" name="email" value="关闭" title="关闭">关闭
+			</div>
+
+		</div>
+	</form>
+
+	<form class="accountSet-form bs-center-middle" id="accountSet-app">
+		<p>没有已授权应用</p>
+	</form>
+
+	</div>
+	
+<script src="../js/module/jquery.min.js"></script>
+<script src="../js/module/amazeui.min.js"></script>
+<script src="../layui/layui.js"></script>
+<!-- 引入富文本js文件,注意,只需要引用 JS 无需引用任何 CSS ！！！-->
+<script src="../js/module/wangEditor.min.js"></script>
+<script src="../js/module/cropper.min.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/accountSet.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<?php
+	session_start();
+
+?>
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- X-UA-Compatible是IE8的一个专有<meta>属性，它告诉IE8采用何种IE版本去渲染网页,这里使用edge来渲染，提高兼容性 -->
+
+	<meta name="description" content="低配版有道云笔记">
+	<meta name="keywords" content="有道云">
+	<!-- 添加网站描述，关键字等，便于搜索引擎优化 -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 在移动端固定宽度 -->
+
+	<title>低配版有道云笔记</title>
+
+	<!-- 使用 amazeUI库 -->
+	<!-- 所有的以 am- 开始的class值，都是该库提供的样式 -->
+	<link rel="stylesheet" type="text/css" href="../css/module/amazeui.min.css">
+	<!-- 抽取基本样式与复用样式，基本样式以 bs- 开头的class值 -->
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+	
+	<!-- 
+		以抽取样式为主，少定义自主样式，这样通过class值可以直接明白标签上添加的样式
+		且修改样式时，可以更改class值，而不需修改css文件源码，增强可读性与可维护性 
+	-->
+	<header class="header bs-header">
+		
+		<div class="bs-logo">
+			<!-- 使用a标签的background引入logo，可以在基础样式中配置logo，使得logo与各个页面解耦 -->
+			<a href="#"></a>
+		</div>
+
+	</header>
+
+	<!-- 
+		class值命名规范要遵循命名空间，即，子元素class值继承父元素class值命名
+	 -->
+	<section class="login bs-center-middle">
+		<form action="login.php" method="post" class=" am-form am-form-horizontal">
+			
+			<div class="login-form am-form-group">
+		    	
+		    	<br><br><br>
+				
+				<label for="form-ipt-account" class="am-u-sm-2 am-form-label">账号:</label>
+				<div class="am-u-sm-10">
+				  <input type="text" name = "username"id="form-ipt-account" placeholder="请输入用户名">
+				</div>
+				
+				<div class="login-form-test am-u-sm-3"></div>
+				<!-- 放置账号/密码的验证信息 -->
+				<div id="login-block-act-test" class="login-form-test am-u-sm-9"></div>
+				
+				<label for="form-ipt-pwd" class="am-u-sm-2 am-form-label">密码:</label>
+				<div class="am-u-sm-10">
+				  <input type="password" name="password" id="form-ipt-pwd" placeholder="请输入密码">
+				</div>
+
+				<div class="login-form-test am-u-sm-3"></div>
+				<div id="login-block-pwd-test" class="login-form-test am-u-sm-9"></div>
+				<label for="form-ipt-yzm" class="am-u-sm-2 am-form-label">验证码:</label>
+				<div class="am-u-sm-10">
+					<input type="text" name="yzm" id="form-ipt-yzm" placeholder="请输入验证码">
+					<img src="yzm.php" onClick="this.src='yzm.php?nocache='+Math.random()" style="cursor:hand">
+				</div>
+
+				<div class="login-block-test am-u-sm-3"></div>
+				<div id="login-block-yzm-test" class="login-block-test am-u-sm-9"></div>
+				
+				<br><br><br><br>
+				<div class="am-u-sm-6 am-text-center">
+					<button type="submit" name="login" class="am-btn am-btn-xl am-btn-primary">登录</button>
+				</div>
+				<div class="am-u-sm-6 am-text-center">
+					<a href="register.html" class="am-btn am-btn-xl am-btn-secondary">注册</a>
+				</div>
+			</div>
+		</form>
+	</section>
+<script src="../js/module/jquery.min.js"></script>
+<script src="../js/module/amazeui.min.js"></script>
+
+</body>
+</html>

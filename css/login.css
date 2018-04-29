@@ -1,0 +1,20 @@
+body{
+	background-image: url('../image/cat5.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.login{
+	background-color: rgba(255,255,255,0.4);
+	width: 40%;
+	min-width: 500px;
+	height: 45%;
+	min-height: 300px;
+	border:2px double rgb(57,141,238);
+	border-radius: 15px;
+	box-shadow: -5px 5px 5px #031a366b;
+}
+
+.login-form-test{
+	height: 10%;
+	min-height: 25px;
+}
